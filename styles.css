@@ -24,9 +24,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 95%;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 /* Header */
@@ -218,37 +218,47 @@ nav {
 }
 
 .features-grid {
+    margin: 0 3rem;
+    border-top: 4px solid black;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, auto);   /* 2 rows, height based on content */
+    gap: 0.5rem;
 }
 
 .feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .feature-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--gradient);
-    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 1.5rem;
     color: white;
+    margin-bottom: 1rem;
+}
+
+.feature-icon img{
+    width:100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: black;
 }
 
 .feature-card h3 {
@@ -264,7 +274,7 @@ nav {
 
 .section-title-container{
     display: flex;
-  gap: 1rem; /* space between text and shape */
+    gap: 1rem; /* space between text and shape */
     position: relative;
     background: #ff7b1c;
     align-items: center;
@@ -280,6 +290,7 @@ nav {
     font-weight: 800;
     margin-bottom: 1rem;
     color:white;
+    z-index: 100;
 }
 
 /* Burst animation container */
@@ -381,7 +392,40 @@ nav {
     opacity: 0;
   }
 }
+#about .container{
+   background: linear-gradient(135deg, #ff7043, #f6cb2ff0);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 40% 60%;/* left 1/3 image, right 2/3 content */
+  align-items: center; /* vertically align image with content */
+}
 
+.about-image {
+  width: 100%;
+  height: 100%;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%; /* optional rounded corners */
+  object-fit: cover;   /* keep proportions */
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+.about-content .section-subtitle {
+    padding:0 3rem 0 3rem;
+    text-align: left;
+    font-size: 1.2rem;
+    color: black;
+    margin-bottom: 3rem;
+}
 
 .section-subtitle {
     text-align: center;
@@ -506,6 +550,7 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    font-weight:600;
 }
 
 .contact-item {
@@ -523,37 +568,62 @@ nav {
 }
 
 /* Background circles */
+        /* Background circles */
         .circle-bg {
             position: absolute;
             border-radius: 50%;
-            background: transparent;
-            border:2.2rem solid #fb8e4e;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
             z-index: -1;
         }
 
         .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -8rem;
-            left: 10rem;
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            left: -200px;
         }
 
         .circle-2 {
             width: 300px;
             height: 300px;
-            bottom: -4rem;
-            right: 30rem;
+            bottom: -150px;
+            right: -150px;
         }
 
         .circle-3 {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             top: 50%;
-            left: -10rem;
+            left: -100px;
             transform: translateY(-50%);
+            opacity: 0.7;
         }
 
+        .circle-4 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            right: -75px;
+            opacity: 0.6;
+        }
+i{
+    background: var(--accent-color);
+    border:1px solid var(--accent-color);
+    border-radius: 2rem;
+    padding: 1rem;
+    size:1rem;
+}
 
+a{
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    color:var(--accent-color);
+    text-decoration: underline;
+}
 .form-group {
     margin-bottom: 1.5rem;
 }
