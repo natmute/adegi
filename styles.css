@@ -484,8 +484,10 @@ nav {
 /* Contact Section */
 .contact {
     padding: 5rem 0;
-    background: var(--gradient);
-    color: white;
+    background: var(white);
+    color: black;
+    position: relative; /* Enable positioning context for circles */
+    overflow: hidden; /* Prevent circles from extending beyond section */
 }
 
 .contact-content {
@@ -513,11 +515,44 @@ nav {
 }
 
 .contact-form {
-    background: rgba(255, 255, 255, 0.1);
+    background-color: var(--accent-color);
+    box-shadow: rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 20px;
     backdrop-filter: blur(10px);
 }
+
+/* Background circles */
+        .circle-bg {
+            position: absolute;
+            border-radius: 50%;
+            background: transparent;
+            border:2.2rem solid #fb8e4e;
+            z-index: -1;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -8rem;
+            left: 10rem;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -4rem;
+            right: 30rem;
+        }
+
+        .circle-3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: -10rem;
+            transform: translateY(-50%);
+        }
+
 
 .form-group {
     margin-bottom: 1.5rem;
