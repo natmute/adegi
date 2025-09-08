@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Shape Design</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: white;
+    }
+
+    .diamond {
+      width: 200px;
+      height: 200px;
+      background: #ff7b1c; /* Outer diamond */
+      transform: rotate(45deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-large {
+      width: 120px;
+      height: 120px;
+      background: #c24b06; /* Large circle */
+      border-radius: 50%;
+      position: relative;
+      transform: rotate(-45deg); /* Cancel diamond rotation for inside */
+    }
+
+    .circle-medium {
+      width: 90px;
+      height: 90px;
+      background: #e86713; /* Medium circle */
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+
+    .circle-small {
+      width: 45px;
+      height: 45px;
+      background: #d05d0d; /* Small circle */
+      border-radius: 50%;
+      position: absolute;
+      bottom: 10px;
+      left: -10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="diamond">
+    <div class="circle-large">
+      <div class="circle-medium"></div>
+      <div class="circle-small"></div>
+    </div>
+  </div>
+</body>
+</html>
