@@ -66,8 +66,8 @@
                 <img src="img/2873.jpg">
             </div>
             <div class="about-content">
-            <div class="section-title-container" style="border-radius:2rem; margin:0 2rem 0 2rem; padding: 0; background:transparent;">
-            <h2 class="section-title" style="color:black;">Why Choose Us?</h2>
+            <div class="section-title-container" style="border-radius:2rem; margin:-3.5rem 2rem 0 2rem; padding: 0;">
+            <h2 class="section-title">Why Choose Us?</h2>
             <div class="burst-container">
       <div class="diamond"></div>
         <div class="circle-large"></div>
@@ -110,7 +110,27 @@
     <!-- Accreditations -->
     <section class="accreditations">
         <div class="container">
-            <h3>Our Accreditations</h3>
+            <div class="three-up">
+                <div class="image-card">
+                    <img src="img/2148827208.jpg" alt="Photo 1">
+                     <div class="overlay">
+                        <a href="#courses"><button>Courses</button></a>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="img/2758.jpg" alt="Photo 2">
+                     <div class="overlay">
+                        <a href="#register"><button>Register</button></a>
+                    </div>
+                </div>
+                    <div class="image-card">
+                        <img src="img/39090.jpg" alt="Photo 3">
+                        <div class="overlay">
+                            <a href="#contact"><button>Contact</button></a>
+                        </div>
+                    </div>
+                </div>
+            <h1 class="half-border" style="margin:3rem 0;">Our Accreditations</h1>
             <p>Fully accredited with multiple SETAs and BBBEE Level 1 status with 100% Black Ownership</p>
             <!--<div class="accreditation-badges">-->
                 <div class="marquee-container">
@@ -133,6 +153,44 @@
             <!--</div>-->
         </div>
     </section>
+
+    <section class="consultancy-section">
+    <div class="consultancy-container">
+      <h2 class="section-title half-border" style="color:black;" >
+        The Way We Structure and Deliver Our <br>
+        <span>Courses and Consultancy</span>
+      </h2>
+      <p class="section-desc">
+        Our courses are tailored to client’s needs with a structure that is flexible and designed to match clients’ available time, needs and budget. Adegi produces its own materials that are tailor made to a specific client and on an as-needed basis can source reputable materials on the open market. We are also able to provide off and on-site training. For our consultancy and business development we focus on needs assessments, gap analysis amongst other methodologies in order to streamline and address the real issues the client wants to transform. We believe in transforming and not conforming in business when it comes to organizational and industrial problems.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><img src="img/handshake.png"></div>
+          <h3>OUR SOCIAL RESPONSIBILITY</h3>
+          <p>
+            As part of our commitment to social development, Adegi has initiated its ‘A Day for You’, which aims at providing care and attention to those in need.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon"><img src="img/network.png"></div>
+          <h3>OUR NETWORKS</h3>
+          <p>
+            Collectively, Adegi owners, staff and associates are able to draw on a wide range of influential role-players through their active involvement in education, training and business development for more than a combined 40 years.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon"><img src="img/people.png"></div>
+          <h3>OUR CUSTOMERS</h3>
+          <p>
+            We have provided training interventions to large and small businesses and organisations throughout Africa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Courses Section -->
     <section id="courses" class="courses">
@@ -512,49 +570,82 @@
 
     <!-- Registration Modal -->
     <div id="registrationModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Course Registration</h3>
+        <div class="modal-content registration-modal">
+            <div class="registration-header">
+                <img src="img/adegi.png" alt="Adegi Logo" class="registration-logo">
+                <h2>Registration Form</h2>
                 <span class="close">&times;</span>
             </div>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="regName">Full Name</label>
-                    <input type="text" id="regName" name="regName" required>
-                </div>
-                <div class="form-group">
-                    <label for="regEmail">Email Address</label>
-                    <input type="email" id="regEmail" name="regEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseCategory">Course Category</label>
-                    <input type="text" id="courseCategory" name="courseCategory" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="courseTitle">Course Title</label>
-                    <input type="text" id="courseTitle" name="courseTitle" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
-                <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div class="form-group">
-                    <label for="postalCode">Postal Code</label>
-                    <input type="text" id="postalCode" name="postalCode" required>
-                </div>
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <input type="text" id="country" name="country" required>
-                </div>
-                <div style="display: flex; gap: 1rem;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;">Submit Registration</button>
-                    <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                </div>
-            </form>
+            
+            <div class="registration-body">
+                <form id="registrationForm" class="registration-form">
+                    <div class="form-section">
+                        <h3 class="section-heading">PERSONAL INFORMATION</h3>
+                        
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="newStudent" name="applicantType" value="newStudent">
+                                <label for="newStudent">New Student</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="returningStudent" name="applicantType" value="returning">
+                                <label for="returningStudent">Returning Student</label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="courseCategory">Course Category</label>
+                                <input type="text" id="courseCategory" name="courseCategory" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="courseTitle">Course Title</label>
+                                <input type="text" id="courseTitle" name="courseTitle" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regEmail">Email Address</label>
+                                <input type="email" id="regEmail" name="regEmail" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group half-width">
+                                <label for="postalCode">Postal Code</label>
+                                <input type="text" id="postalCode" name="postalCode" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" name="country" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">Submit</button>
+                        <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

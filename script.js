@@ -497,3 +497,4 @@ window.addEventListener('scroll', () => {
         scrollToTopBtn.classList.remove('visible');
     }
 });
+
