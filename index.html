@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link id='favicon' rel="shortcut icon" href="img/adegi-web-logo.png" type="image/x-png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>Adegi - Excellence in Capacity Building & Consulting</title>
@@ -46,25 +47,45 @@
 </video> 
         <div class="container">
             <div class="hero-content">
-                <h1>Excellence in <br><span style="color:orangered"> Capacity Building </span><br>& Consulting</h1>
+                <h1>Excellence in <br><span style="color:var(--accent-color)"> Capacity Building </span><br>& Consulting</h1>
                 <div class="hero-subtitle">Igniting Tenacity</div>
                 <div class="cta-buttons">
-                    <a href="#courses" class="btn btn-primary">View Courses</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    <a href="#courses" class="btn btn-primary"><i class="fas fa-graduation-cap"></i>View Courses</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone"></i>Contact Us</a>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <!--<div class="scroll-indicator">
             <div>↓ Scroll to explore</div>
+        </div>-->
+    </section>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">18</span>
+                    <span class="stat-label">Course Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Black Ownership</span>
+                </div>
+                <div class="stat-item">
+                    <span style="font-size: 3rem; font-weight: bold; color: var(--accent-color); display: block;">Level 1</span>
+                    <span class="stat-label">BBBEE Status</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About/Features Section -->
     <section id="about" class="features">
         <div class="container about-grid" style="max-width: 100%; padding:0;">
-            <div class="about-image">
-                <img src="img/2873.jpg">
-            </div>
             <div class="about-content">
             <div class="section-title-container" style="border-radius:2rem; margin:-3.5rem 2rem 0 2rem; padding: 0;">
             <h2 class="section-title">Why Choose Us?</h2>
@@ -101,9 +122,11 @@
                     <div class="feature-icon"><img src="img/Organize-removebg-preview.png"></div>    
                 <p>Organize</p>
                 </div>
-                
             </div>
         </div>
+        <div class="about-image">
+                <img src="img/2873.jpg">
+            </div>
         </div>
     </section>
 
@@ -572,8 +595,16 @@
     <div id="registrationModal" class="modal">
         <div class="modal-content registration-modal">
             <div class="registration-header">
-                <img src="img/adegi.png" alt="Adegi Logo" class="registration-logo">
-                <h2>Registration Form</h2>
+                <!-- Decorative circles -->
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+    
+    <!-- Orange accent panel -->
+    <div class="orange-panel-1"></div>
+    <div class="orange-panel-2"></div>
+                <img src="img/whitelogo.png" alt="Adegi Logo" class="registration-logo">
+                <h2 style="padding-left: 1rem;">Registration Form</h2>
                 <span class="close">&times;</span>
             </div>
             
@@ -628,7 +659,7 @@
                             </div>
                             <div class="form-group half-width">
                                 <label for="postalCode">Postal Code</label>
-                                <input type="text" id="postalCode" name="postalCode" required>
+                                <input type="text" id="postalCode" name="postalCode" required style="padding-right:1rem;">
                             </div>
                         </div>
 
@@ -652,6 +683,6 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Adegi. All rights reserved. Umuntu Ngumuntu Ngabantu</p>
+            <p>&copy; 2025 Adegi. All rights reserved. Umuntu Ngumuntu Ngabantu</p>
         </div>
     </footer>

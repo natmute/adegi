@@ -82,6 +82,186 @@ function initScrollEffects() {
     });
 }
 
+// Counter Animation for About Section Stats
+function animateCounter(element, target, duration = 2000, suffix = '') {
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target + suffix;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(start) + suffix;
+        }
+    }, 16);
+}
+
+// Intersection Observer for triggering animations when section comes into view
+function initCounterAnimation() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    // Define your target numbers and suffixes
+    const stats = [
+        { target: 40, suffix: '+' },    // Years Experience
+        { target: 18, suffix: '' },   // Course categories  
+        { target: 100, suffix: '%' }    // black ownership
+    ];
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start all counter animations
+                statNumbers.forEach((element, index) => {
+                    if (stats[index]) {
+                        // Reset to 0 first
+                        element.textContent = '0' + stats[index].suffix;
+                        // Start animation with a slight delay for each counter
+                        setTimeout(() => {
+                            animateCounter(element, stats[index].target, 2000, stats[index].suffix);
+                        }, index * 200); // 200ms delay between each counter
+                    }
+                });
+                
+                // Stop observing after animation starts (prevents re-triggering)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5 // Trigger when 50% of the about section is visible
+    });
+    
+    // Start observing the about section
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+}
+
+// Initialize counter animation when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait a bit for other animations to settle
+    setTimeout(initCounterAnimation, 500);
+});
+
+// Alternative: If you want to trigger on scroll instead of intersection observer
+function initCounterOnScroll() {
+    let hasAnimated = false;
+    
+    window.addEventListener('scroll', function() {
+        if (hasAnimated) return; // Only animate once
+        
+        const statsSection = document.querySelector('.stats');
+        const aboutTop = statsSection.offsetTop;
+        const aboutHeight = statsSection.offsetHeight;
+        const scrollTop = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Check if about section is in viewport
+        if (scrollTop + windowHeight > aboutTop + 100) {
+            hasAnimated = true;
+            
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const stats = [
+                { target: 3, suffix: '+' },
+                { target: 10, suffix: '+' },
+                { target: 15, suffix: '+' }
+            ];
+            
+            statNumbers.forEach((element, index) => {
+                if (stats[index]) {
+                    element.textContent = '0' + stats[index].suffix;
+                    setTimeout(() => {
+                        animateCounter(element, stats[index].target, 2000, stats[index].suffix);
+                    }, index * 200);
+                }
+            });
+        }
+    });
+}
+
+// Enhanced counter with easing animation (more smooth)
+function animateCounterEased(element, target, duration = 2000, suffix = '') {
+    let start = 0;
+    const startTime = performance.now();
+    
+    function easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+    }
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        
+        const current = Math.floor(easedProgress * target);
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target + suffix;
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// If you want to use the enhanced version, replace the animateCounter calls with:
+// animateCounterEased(element, stats[index].target, 2000, stats[index].suffix);
+const stats = [
+    { target: 3, suffix: '+' },    // Change to your actual years
+    { target: 10, suffix: '+' },   // Change to your project count
+    { target: 15, suffix: '+' }    // Change to your tech count
+];
+
+
+/*
+// Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const finalValue = stat.textContent.trim();
+                        // Extract numeric value and suffix
+                        const numericMatch = finalValue.match(/(\d+)/);
+                        if (numericMatch) {
+                            const targetNumber = parseInt(numericMatch[1]);
+                            const prefix = finalValue.substring(0, numericMatch.index);
+                            const suffix = finalValue.substring(numericMatch.index + numericMatch[1].length);
+                            
+                            let currentNumber = 0;
+                            stat.textContent = prefix + '0' + suffix;
+                        const increment = () => {
+                                if (currentNumber < targetNumber) {
+                                    currentNumber = Math.min(currentNumber + Math.ceil(targetNumber / 30), targetNumber);
+                                    stat.textContent = prefix + currentNumber + suffix;
+                                    setTimeout(increment, 60);
+                                } else {
+                                    stat.textContent = finalValue; // Ensure final value is exactly what was intended
+                                }
+                            };
+                            
+                            setTimeout(increment, 200); // Small delay before starting animation
+                        }
+                    });
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+            */
 // Form submissions
 function initForms() {
     // Contact form
