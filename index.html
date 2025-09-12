@@ -29,6 +29,7 @@
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#consulting">Consulting</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="openRegistrationModal()">Register</a></li>
             </ul>
             <div class="mobile-menu">
                 <span></span>
@@ -626,15 +627,28 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="courseCategory">Course Category</label>
-                                <input type="text" id="courseCategory" name="courseCategory" readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="courseTitle">Course Title</label>
-                                <input type="text" id="courseTitle" name="courseTitle" readonly>
+                                <label for="courseTitle">Select Course</label>
+                                <select id="courseTitle" name="courseTitle" required>
+            <option value="">-- Select a Course --</option>
+            <option value="Accounting, Auditing and Finance">Accounting, Auditing and Finance</option>
+            <option value="Administration, Secretarial and Customer Service">Administration, Secretarial and Customer Service</option>
+            <option value="Banking, Insurance and Financial Risk Management">Banking, Insurance and Financial Risk Management</option>
+            <option value="Career Development">Career Development</option>
+            <option value="Environmental, Urban and Regional Planning">Environmental, Urban and Regional Planning</option>
+            <option value="Event, Travel and Tourism Management">Event, Travel and Tourism Management</option>
+            <option value="Executive Leadership and Management of Organisations">Executive Leadership and Management of Organisations</option>
+            <option value="Human Resource Management">Human Resource Management</option>
+            <option value="ICT and Security Management">ICT and Security Management</option>
+            <option value="Land, Agriculture and Food Sciences">Land, Agriculture and Food Sciences</option>
+            <option value="NGO Management and Policy Development">NGO Management and Policy Development</option>
+            <option value="Oil and Gas Energy">Oil and Gas Energy</option>
+            <option value="Procurement and Supply Chain Management">Procurement and Supply Chain Management</option>
+            <option value="Project Management">Project Management</option>
+            <option value="Rule of Law, Democracy & Human Rights">Rule of Law, Democracy & Human Rights</option>
+            <option value="Safety, Health and Environment (SHE)">Safety, Health and Environment (SHE)</option>
+            <option value="Sales, Marketing and Public Relations">Sales, Marketing and Public Relations</option>
+            <option value="Supervisors and Managers">Supervisors and Managers</option>
+        </select>
                             </div>
                         </div>
 

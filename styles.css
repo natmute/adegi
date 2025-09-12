@@ -1046,6 +1046,23 @@ footer {
     margin-bottom: 0;
 }
 
+.registration-form .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.5rem;
+    background: white;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.registration-form .form-group select:focus {
+    outline: none;
+    border-color: #e55a2b;
+    box-shadow: 0 0 5px rgba(252, 98, 5, 0.3);
+}
+
 .registration-form .form-group label {
     display: block;
     font-size: 0.9rem;

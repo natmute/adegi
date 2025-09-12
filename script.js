@@ -41,10 +41,17 @@ function populateCourses() {
     });
 }
 */
-// Register for course
 function registerForCourse(title, duration) {
-    document.getElementById('courseTitle').value = title;
-    document.getElementById('courseCategory').value = 'Training Course';
+    // Set the dropdown to the selected course
+    const courseSelect = document.getElementById('courseTitle');
+    courseSelect.value = title;
+    document.getElementById('registrationModal').style.display = 'flex';
+}
+
+// New function for opening modal from navigation
+function openRegistrationModal() {
+    // Clear any pre-selected course
+    document.getElementById('courseTitle').selectedIndex = 0;
     document.getElementById('registrationModal').style.display = 'flex';
 }
 
