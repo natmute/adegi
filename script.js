@@ -68,10 +68,22 @@ function smoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         });
     });
@@ -80,12 +92,31 @@ function smoothScroll() {
 // Header scroll effect
 function initScrollEffects() {
     const header = document.querySelector('header');
+    let lastScrollTop = 0;
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (window.innerWidth <= 768) {
+            // On mobile, hide header when scrolling down, show when scrolling up
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            // Desktop behavior
+            header.style.transform = 'translateY(0)';
         }
+        
+        // Background opacity change
+        if (scrollTop > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
     });
 }
 
@@ -417,6 +448,18 @@ function initForms() {
     });
 }
 
+// Close mobile menu when clicking on a nav link
+    const navLinkItems = document.querySelectorAll('.nav-links a:not([onclick*="Registration"])');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    
+
 // Mobile menu toggle
 function initMobileMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -425,7 +468,51 @@ function initMobileMenu() {
     mobileMenu.addEventListener('click', function() {
         navLinks.classList.toggle('active');
         this.classList.toggle('active');
+
+        // Prevent body scroll when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
+
+   //Close mobile menu when clicking on a nav link
+    const navLinkItems = document.querySelectorAll('.nav-links a:not([onclick*="Registration"])');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close mobile menu on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }); 
 }
 
 // Intersection Observer for animations
@@ -475,6 +562,38 @@ function initModal() {
     });
 }
 
+function initTouchInteractions() {
+    if ('ontouchstart' in window) {
+        // Add touch-friendly hover effects for course cards
+        const courseCards = document.querySelectorAll('.course-card');
+        courseCards.forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Add touch feedback for buttons
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    }
+}
+
 // Parallax effect for hero section
 function initParallax() {
     const hero = document.querySelector('.hero');
@@ -492,6 +611,7 @@ function initParallax() {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     //populateCourses();
+    initTouchInteractions(); // Add this new function
     smoothScroll();
     initScrollEffects();
     initForms();

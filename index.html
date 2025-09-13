@@ -21,7 +21,7 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="img/adegi.png">
+                <a href="#home"><img src="img/adegi.png"></a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -52,7 +52,7 @@
                 <div class="hero-subtitle">Igniting Tenacity</div>
                 <div class="cta-buttons">
                     <a href="#courses" class="btn btn-primary"><i class="fas fa-graduation-cap"></i>View Courses</a>
-                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone"></i>Contact Us</a>
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-phone"></i>Contact Us</a>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
                 <div class="image-card">
                     <img src="img/2758.jpg" alt="Photo 2">
                      <div class="overlay">
-                        <a href="#register"><button>Register</button></a>
+                        <a href="#register" onclick="openRegistrationModal()"><button>Register</button></a>
                     </div>
                 </div>
                     <div class="image-card">
@@ -155,7 +155,7 @@
                     </div>
                 </div>
             <h1 class="half-border" style="margin:3rem 0;">Our Accreditations</h1>
-            <p>Fully accredited with multiple SETAs and BBBEE Level 1 status with 100% Black Ownership</p>
+            <p>We are fully accredited with the ETDP SETA, Agri SETA, PSETA, MICT SETA, LGSETA & Services SETA and hold BBBEE Level 1 status with 100% Black Ownership</p>
             <!--<div class="accreditation-badges">-->
                 <div class="marquee-container">
     <div class="marquee">
@@ -239,8 +239,8 @@
             <div class="course-body">
                 <h3>Accounting, Auditing and Finance</h3>
                 <p class="course-description">Comprehensive accounting principles, auditing standards, and financial management for modern business environments.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Accounting, Auditing and Finance', '12 Weeks')">Register Now</button>
+              
+                <button class="btn btn-secondary" onclick="registerForCourse('Accounting, Auditing and Finance')">Register Now</button>
             </div>
         </div>
     </div>
@@ -248,13 +248,13 @@
     <!-- Course 2 -->
     <div class="course-card" data-category="business" >
         <div class="course-overlay">
-            <div class="course-header" style="background-image: url('img/admin2.webp');">
+            <div class="course-header" style="background-image: url('img/admin2.png');">
             </div>
             <div class="course-body">
                 <h3>Administration, Secretarial and Customer Service</h3>
                 <p class="course-description">Essential administrative skills, customer service excellence, and secretarial best practices.</p>
-                <div class="course-duration">9 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Administration, Secretarial and Customer Service', '9 Weeks')">Register Now</button>
+               
+                <button class="btn btn-secondary" onclick="registerForCourse('Administration, Secretarial and Customer Service')">Register Now</button>
             </div>
         </div>
     </div>
@@ -267,8 +267,8 @@
             <div class="course-body">
                 <h3>Banking, Insurance and Financial Risk Management</h3>
                 <p class="course-description">Understanding banking operations, insurance principles, and financial risk assessment and management.</p>
-                <div class="course-duration">9 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Banking, Insurance and Financial Risk Management', '9 Weeks')">Register Now</button>
+               
+                <button class="btn btn-secondary" onclick="registerForCourse('Banking, Insurance and Financial Risk Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -281,8 +281,8 @@
             <div class="course-body">
                 <h3>Career Development</h3>
                 <p class="course-description">Strategic career planning, professional development, and leadership skills for career advancement.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Career Development', '12 Weeks')">Register Now</button>
+            
+                <button class="btn btn-secondary" onclick="registerForCourse('Career Development')">Register Now</button>
             </div>
         </div>
     </div>
@@ -295,8 +295,8 @@
             <div class="course-body">
                 <h3>Environmental, Urban and Regional Planning</h3>
                 <p class="course-description">Sustainable development practices, urban planning principles, and environmental management strategies.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Environmental, Urban and Regional Planning', '12 Weeks')">Register Now</button>
+              
+                <button class="btn btn-secondary" onclick="registerForCourse('Environmental, Urban and Regional Planning')">Register Now</button>
             </div>
         </div>
     </div>
@@ -309,8 +309,8 @@
             <div class="course-body">
                 <h3>Event, Travel and Tourism Management</h3>
                 <p class="course-description">Comprehensive event planning, tourism industry insights, and hospitality management skills.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Event, Travel and Tourism Management', '12 Weeks')">Register Now</button>
+             
+                <button class="btn btn-secondary" onclick="registerForCourse('Event, Travel and Tourism Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -323,8 +323,8 @@
             <div class="course-body">
                 <h3>Executive Leadership and Management of Organisations</h3>
                 <p class="course-description">Advanced leadership strategies, organizational management, and executive decision-making skills.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Executive Leadership and Management of Organisations', '12 Weeks')">Register Now</button>
+            
+                <button class="btn btn-secondary" onclick="registerForCourse('Executive Leadership and Management of Organisations')">Register Now</button>
             </div>
         </div>
     </div>
@@ -332,13 +332,13 @@
     <!-- Course 8 -->
     <div class="course-card" data-category="business" >
         <div class="course-overlay">
-            <div class="course-header" style="background-image: url('img/hr2.webp');">
+            <div class="course-header" style="background-image: url('img/hr2.png');">
             </div>
             <div class="course-body">
                 <h3>Human Resource Management</h3>
                 <p class="course-description">Strategic HR practices, talent management, employee relations, and organizational development.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Human Resource Management', '12 Weeks')">Register Now</button>
+             
+                <button class="btn btn-secondary" onclick="registerForCourse('Human Resource Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -351,8 +351,8 @@
             <div class="course-body">
                 <h3>ICT and Security Management</h3>
                 <p class="course-description">Information technology management, cybersecurity principles, and digital infrastructure security.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('ICT and Security Management', '12 Weeks')">Register Now</button>
+               
+                <button class="btn btn-secondary" onclick="registerForCourse('ICT and Security Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -365,8 +365,8 @@
             <div class="course-body">
                 <h3>Land, Agriculture and Food Sciences</h3>
                 <p class="course-description">Agricultural best practices, food science principles, and sustainable land management techniques.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Land, Agriculture and Food Sciences', '12 Weeks')">Register Now</button>
+         
+                <button class="btn btn-secondary" onclick="registerForCourse('Land, Agriculture and Food Sciences')">Register Now</button>
             </div>
         </div>
     </div>
@@ -379,8 +379,8 @@
             <div class="course-body">
                 <h3>NGO Management and Policy Development</h3>
                 <p class="course-description">Non-profit organization management, policy development, and community development strategies.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('NGO Management and Policy Development', '12 Weeks')">Register Now</button>
+            
+                <button class="btn btn-secondary" onclick="registerForCourse('NGO Management and Policy Development')">Register Now</button>
             </div>
         </div>
     </div>
@@ -393,8 +393,8 @@
             <div class="course-body">
                 <h3>Oil and Gas Energy</h3>
                 <p class="course-description">Energy sector management, oil and gas operations, and sustainable energy practices.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Oil and Gas Energy', '12 Weeks')">Register Now</button>
+            
+                <button class="btn btn-secondary" onclick="registerForCourse('Oil and Gas Energy')">Register Now</button>
             </div>
         </div>
     </div>
@@ -407,8 +407,7 @@
             <div class="course-body">
                 <h3>Procurement and Supply Chain Management</h3>
                 <p class="course-description">Strategic procurement processes, supply chain optimization, and vendor management.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Procurement and Supply Chain Management', '12 Weeks')">Register Now</button>
+                <button class="btn btn-secondary" onclick="registerForCourse('Procurement and Supply Chain Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -421,8 +420,8 @@
             <div class="course-body">
                 <h3>Project Management</h3>
                 <p class="course-description">Professional project management methodologies, planning, execution, and delivery excellence.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Project Management', '12 Weeks')">Register Now</button>
+             
+                <button class="btn btn-secondary" onclick="registerForCourse('Project Management')">Register Now</button>
             </div>
         </div>
     </div>
@@ -435,8 +434,8 @@
             <div class="course-body">
                 <h3>Rule of Law, Democracy & Human Rights</h3>
                 <p class="course-description">Legal frameworks, democratic principles, and human rights advocacy and protection.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Rule of Law, Democracy & Human Rights', '12 Weeks')">Register Now</button>
+             
+                <button class="btn btn-secondary" onclick="registerForCourse('Rule of Law, Democracy & Human Rights')">Register Now</button>
             </div>
         </div>
     </div>
@@ -444,13 +443,13 @@
     <!-- Course 16 -->
     <div class="course-card" data-category="governance" >
         <div class="course-overlay">
-            <div class="course-header" style="background-image: url('img/safety1.webp');">
+            <div class="course-header" style="background-image: url('img/safety1.png');">
             </div>
             <div class="course-body">
                 <h3>Safety, Health and Environment (SHE)</h3>
                 <p class="course-description">Workplace safety standards, health management, and environmental compliance.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Safety, Health and Environment (SHE)', '12 Weeks')">Register Now</button>
+           
+                <button class="btn btn-secondary" onclick="registerForCourse('Safety, Health and Environment (SHE)')">Register Now</button>
             </div>
         </div>
     </div>
@@ -463,8 +462,8 @@
             <div class="course-body">
                 <h3>Sales, Marketing and Public Relations</h3>
                 <p class="course-description">Strategic marketing, sales excellence, and public relations management.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Sales, Marketing and Public Relations', '12 Weeks')">Register Now</button>
+ 
+                <button class="btn btn-secondary" onclick="registerForCourse('Sales, Marketing and Public Relations')">Register Now</button>
             </div>
         </div>
     </div>
@@ -477,8 +476,8 @@
             <div class="course-body">
                 <h3>Supervisors and Managers</h3>
                 <p class="course-description">Leadership development, team management, and supervisory skills for effective management.</p>
-                <div class="course-duration">12 Weeks</div>
-                <button class="btn btn-secondary" onclick="registerForCourse('Supervisors and Managers', '12 Weeks')">Register Now</button>
+              
+                <button class="btn btn-secondary" onclick="registerForCourse('Supervisors and Managers')">Register Now</button>
             </div>
         </div>
     </div>
@@ -705,7 +704,61 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Adegi. All rights reserved. Umuntu Ngumuntu Ngabantu</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="img/whitelogo.png" alt="Adegi Logo" class="footer-logo">
+                <p class="footer-description">
+                    Excellence in Capacity Building & Consulting. We are rooted to the principles of governing, 
+                    managing and organising that will help you structure and strengthen your business formula and skills.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                    <li><a href="#consulting"><i class="fas fa-briefcase"></i> Consulting</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#courses">Training Programs</a></li>
+                    <li><a href="#consulting">Business Consulting</a></li>
+                    <li><a href="#consulting">Project Management</a></li>
+                    <li><a href="#consulting">HR Advisory</a></li>
+                    <li><a href="#consulting">Digital Transformation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="footer-contact-info">
+                    <div class="contact-footer">
+                        <i class="fas fa-envelope"></i>
+                        <span><a target="_blank" href="mailto:info@adegi.co.za">info@adegi.co.za</a></span>
+                    </div>
+                    <div class="contact-footer">
+                        <i class="fas fa-phone"></i>
+                        <span><a target="_blank" href="tel:+27128802056">+27 12 880 2056</a></span>
+                    </div>
+                    <div class="contact-footer">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span><a target="_blank" href="tel:+27616921313">+27 61 692 1313</a></span>
+                    </div>
+                    <div class="contact-footer">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><a target="_blank" href="https://www.google.com/maps/place/122+Pitts+Ave,+Weavind+Park,+Pretoria,+0184/@-25.7341278,28.2728099,17z/data=!4m6!3m5!1s0x1e95603e88d9960b:0x38c45693040429c1!8m2!3d-25.7341278!4d28.2728099!16s%2Fg%2F11y21vflbq?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D">30 Botanica, 122 Pitts Street,<br>Weavind Park, Pretoria, 0184</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Adegi. All rights reserved. Umuntu Ngumuntu Ngabantu | Level 1 BBBEE | 100% Black Ownership</p>
         </div>
     </footer>
