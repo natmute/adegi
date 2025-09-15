@@ -139,6 +139,8 @@
             }
         }
 
+        
+
         // Form validation functions
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -184,157 +186,126 @@
             return isValid;
         }
 
-        //Fixed Registration Form Handler
-function initForms() {
-    const contactForm = document.getElementById('contactForm');
-    const registrationForm = document.getElementById('registrationForm');
-    const formStatus = document.getElementById('form-status');
-    const registrationStatus = document.getElementById('registration-form-status');
-    
-    // Contact Form (existing - working)
-    if (contactForm) {
-        const formFields = contactForm.querySelectorAll('input, textarea');
-        formFields.forEach(field => {
-            field.addEventListener('blur', () => validateField(field));
-            field.addEventListener('input', () => {
-                if (field.classList.contains('invalid')) {
-                    validateField(field);
-                }
-            });
-        });
-
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+       function initForms() {
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
             
-            let isFormValid = true;
+            const formFields = contactForm.querySelectorAll('input, textarea');
             formFields.forEach(field => {
-                if (!validateField(field)) {
-                    isFormValid = false;
-                }
-            });
-
-            if (!isFormValid) {
-                formStatus.className = 'form-status error';
-                formStatus.textContent = 'Please correct the errors above before submitting.';
-                return;
-            }
-
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            formStatus.className = 'form-status loading';
-            formStatus.textContent = 'Sending your message...';
-
-            try {
-                const formData = new FormData(this);
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('invalid')) {
+                        validateField(field);
                     }
                 });
-
-                if (response.ok) {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = 'Thank you! Your message has been sent successfully.';
-                    this.reset();
-                    formFields.forEach(field => {
-                        field.classList.remove('valid', 'invalid');
-                    });
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                formStatus.className = 'form-status error';
-                formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
-            } finally {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }
-        });
-    }
-
-    // FIXED: Registration Form with proper Formspree integration
-    if (registrationForm) {
-        const registrationFields = registrationForm.querySelectorAll('input, select');
-        
-        // Add validation to registration fields
-        registrationFields.forEach(field => {
-            field.addEventListener('blur', () => validateField(field));
-            field.addEventListener('input', () => {
-                if (field.classList.contains('invalid')) {
-                    validateField(field);
-                }
-            });
-        });
-
-        registrationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Validate all fields
-            let isFormValid = true;
-            registrationFields.forEach(field => {
-                if (!validateField(field)) {
-                    isFormValid = false;
-                }
             });
 
-            if (!isFormValid) {
-                registrationStatus.className = 'form-status error';
-                registrationStatus.textContent = 'Please correct the errors above before submitting.';
-                return;
-            }
-
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Submitting...';
-            submitButton.disabled = true;
-            
-            registrationStatus.className = 'form-status loading';
-            registrationStatus.textContent = 'Submitting your registration...';
-
-            try {
-                const formData = new FormData(this);
-                formData.append('_subject', 'New Course Registration - ' + formData.get('courseTitle'));
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
                 
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+                let isFormValid = true;
+                formFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isFormValid = false;
                     }
                 });
 
-                if (response.ok) {
-                    registrationStatus.className = 'form-status success';
-                    registrationStatus.textContent = 'Registration submitted successfully! We will contact you with further details.';
-                    this.reset();
-                    registrationFields.forEach(field => {
-                        field.classList.remove('valid', 'invalid');
-                    });
-                    
-                    // Close modal after 2 seconds
-                    setTimeout(() => {
-                        closeModal();
-                        registrationStatus.textContent = '';
-                        registrationStatus.className = '';
-                    }, 2000);
-                } else {
-                    throw new Error('Registration submission failed');
+                if (!isFormValid) {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Please correct the errors above before submitting.';
+                    return;
                 }
-            } catch (error) {
-                registrationStatus.className = 'form-status error';
-                registrationStatus.textContent = 'Sorry, there was an error submitting your registration. Please try again.';
-            } finally {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }
-        });
-    }
-}
+
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                formStatus.className = 'form-status loading';
+                formStatus.textContent = 'Sending your message...';
+
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                        this.reset();
+                        formFields.forEach(field => {
+                            field.classList.remove('valid', 'invalid');
+                        });
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                } finally {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+
+            const regForm=document.getElementById('registrationForm');
+            const regformStatus = document.getElementById('registration-form-status');
+            
+            const regformFields = contactForm.querySelectorAll('input,select');
+            regformFields.forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('invalid')) {
+                        validateField(field);
+                    }
+                });
+            });
+
+            regForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+
+                regformStatus.className = 'form-status loading';
+                regformStatus.textContent = 'Sending your message...';
+
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        regformStatus.className = 'form-status success';
+                        regformStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                        this.reset();
+                        regformFields.forEach(field => {
+                            field.classList.remove('valid', 'invalid');
+                        });
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    regformStatus.className = 'form-status error';
+                    regformStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                } finally {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
         // Mobile menu toggle
         function initMobileMenu() {
             const mobileMenu = document.querySelector('.mobile-menu');
