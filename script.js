@@ -139,79 +139,6 @@
             }
         }
 
-        // Registration form validation and submission
-const registrationForm = document.getElementById('registrationForm');
-const registrationStatus = document.getElementById('registration-form-status');
-
-const registrationFields = registrationForm.querySelectorAll('input, select');
-registrationFields.forEach(field => {
-    field.addEventListener('blur', () => validateField(field));
-    field.addEventListener('input', () => {
-        if (field.classList.contains('invalid')) {
-            validateField(field);
-        }
-    });
-});
-
-registrationForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    let isFormValid = true;
-    registrationFields.forEach(field => {
-        if (!validateField(field)) {
-            isFormValid = false;
-        }
-    });
-
-    if (!isFormValid) {
-        registrationStatus.className = 'form-status error';
-        registrationStatus.textContent = 'Please correct the errors above before submitting.';
-        return;
-    }
-
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    submitButton.textContent = 'Submitting...';
-    submitButton.disabled = true;
-    
-    registrationStatus.className = 'form-status loading';
-    registrationStatus.textContent = 'Submitting your registration...';
-
-    try {
-        const formData = new FormData(this);
-        formData.append('_subject', 'New Course Registration');
-        
-        const response = await fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            registrationStatus.className = 'form-status success';
-            registrationStatus.textContent = 'Registration submitted successfully! We will contact you with further details.';
-            this.reset();
-            registrationFields.forEach(field => {
-                field.classList.remove('valid', 'invalid');
-            });
-            
-            setTimeout(() => {
-                closeModal();
-            }, 2000);
-        } else {
-            throw new Error('Registration submission failed');
-        }
-    } catch (error) {
-        registrationStatus.className = 'form-status error';
-        registrationStatus.textContent = 'Sorry, there was an error submitting your registration. Please try again.';
-    } finally {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }
-});
-
         // Form validation functions
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -343,29 +270,28 @@ registrationForm.addEventListener('submit', async function(e) {
 
         // Mobile menu toggle
         function initMobileMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-    
-    mobileMenu.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        this.classList.toggle('active');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
 
-        if (navLinks.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
+                if (navLinks.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
 
-    // MOVE THIS CODE INSIDE THE FUNCTION (it was outside before)
-    const navLinkItems = document.querySelectorAll('.nav-links a:not([onclick*="Registration"])');
-    navLinkItems.forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
+            const navLinkItems = document.querySelectorAll('.nav-links a:not([onclick*="Registration"])');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
             
             document.addEventListener('click', function(e) {
                 if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
@@ -418,50 +344,24 @@ registrationForm.addEventListener('submit', async function(e) {
         }
 
         // Modal event listeners
-       // Modal event listeners - ADD THIS
-// Fixed Modal initialization
-function initModal() {
-    const modal = document.getElementById('registrationModal');
-    // FIXED: Changed selector from '.registration-header .close' to just '.close'
-    const closeBtn = document.querySelector('.close');
+        function initModal() {
+            const modal = document.getElementById('registrationModal');
+            const closeBtn = document.querySelector('.close');
 
-    // Close button click
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeModal();
-        });
-    }
-    
-    // Click outside modal to close
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    }
+            closeBtn.addEventListener('click', closeModal);
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
 
-    // Escape key to close
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
-            closeModal();
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
         }
-    });
-}
-
-// Make sure closeModal function is properly defined
-function closeModal() {
-    const modal = document.getElementById('registrationModal');
-    if (modal) {
-        modal.style.display = 'none';
-        // Reset form if needed
-        const form = document.getElementById('registrationForm');
-        if (form) {
-            form.reset();
-        }
-    }
-}
 
         function initTouchInteractions() {
             if ('ontouchstart' in window) {
