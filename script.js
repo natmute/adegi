@@ -346,9 +346,6 @@ registrationForm.addEventListener('submit', async function(e) {
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
     
-    // Add null checks
-    if (!mobileMenu || !navLinks) return;
-    
     mobileMenu.addEventListener('click', function() {
         navLinks.classList.toggle('active');
         this.classList.toggle('active');
@@ -422,9 +419,11 @@ registrationForm.addEventListener('submit', async function(e) {
 
         // Modal event listeners
        // Modal event listeners - ADD THIS
+// Fixed Modal initialization
 function initModal() {
     const modal = document.getElementById('registrationModal');
-    const closeBtn = document.querySelector('.registration-header .close');
+    // FIXED: Changed selector from '.registration-header .close' to just '.close'
+    const closeBtn = document.querySelector('.close');
 
     // Close button click
     if (closeBtn) {
@@ -435,18 +434,33 @@ function initModal() {
     }
     
     // Click outside modal to close
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
 
     // Escape key to close
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
             closeModal();
         }
     });
+}
+
+// Make sure closeModal function is properly defined
+function closeModal() {
+    const modal = document.getElementById('registrationModal');
+    if (modal) {
+        modal.style.display = 'none';
+        // Reset form if needed
+        const form = document.getElementById('registrationForm');
+        if (form) {
+            form.reset();
+        }
+    }
 }
 
         function initTouchInteractions() {
